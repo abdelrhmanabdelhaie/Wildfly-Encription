@@ -1,0 +1,41 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+    <parent>
+        <groupId>org.picketbox</groupId>
+        <artifactId>picketbox-parent</artifactId>
+        <version>5.1.0.Final</version>
+        <relativePath>../pom.xml</relativePath>
+    </parent>
+    <modelVersion>4.0.0</modelVersion>
+    <groupId>org.picketbox</groupId>
+    <artifactId>jbosssx-pom</artifactId>
+    <version>5.1.0.Final</version>
+    <packaging>pom</packaging>
+    <name>PicketBox Implementation - Aggregator</name>
+    <url>http://jboss.org/picketbox</url>
+    <description>PicketBox is a security project for Java Applications.</description>
+
+    <modules>
+        <module>identity</module>
+        <module>acl</module>
+        <module>jbosssx</module>
+        <module>jbosssx-client</module>
+        <module>dist</module>
+    </modules>
+
+    <profiles>
+        <!-- Specify heap size for ACL tests -->
+        <profile>
+            <id>acl-heap-profile</id>
+            <activation>
+                <activeByDefault>true</activeByDefault>
+            </activation>
+            <properties>
+                <surefire.jvm.args>-Xms512m -Xmx1024m</surefire.jvm.args>
+            </properties>
+            <modules>
+                <module>acl</module>
+            </modules>
+        </profile>
+    </profiles>
+
+</project>
